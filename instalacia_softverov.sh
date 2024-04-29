@@ -33,9 +33,6 @@ nainstalujBalicek "php"
 nainstalujBalicek "libapache2-mod-php"
 nainstalujBalicek "php-mysql"
 
-# Další balíčky podle potřeby
-# nainstalujBalicek "další_baličky"
-
 # restartovanie apache pre spustenie
 systemctl restart apache2
 
