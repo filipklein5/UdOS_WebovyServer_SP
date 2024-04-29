@@ -35,3 +35,6 @@ configure_virtual_host "localhost" "/var/www/html/example"
 set_directory_permissions "/var/www/html/example"
 
 echo "Nastavenie webového servera bolo dokončené."
+
+# prechod na dalsi skript
+bash vytvorenie_kont.sh
