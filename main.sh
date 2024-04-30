@@ -18,9 +18,6 @@ for subor in *.sh; do
 done
 echo "Všetky súbory v priečinku boli úspešne nastavené na spustiteľné."
 
-# adresar s webovou aplikaciou
-webovyServerDir="/var/www/html/SP_udos_webserver"
-
 # nastavenie opravneni pre adresar aplikacie
 chown -R www-data:www-data "$webovyServerDir"
 chmod -R 755 "$webovyServerDir"

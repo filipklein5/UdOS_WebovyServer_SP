@@ -38,6 +38,9 @@ nainstalujBalicek "php"
 nainstalujBalicek "libapache2-mod-php"
 nainstalujBalicek "php-mysql"
 
+#instalacia iptables
+nainstalujBalicek "iptables"
+
 # restartovanie apache pre spustenie
 systemctl restart apache2
 
