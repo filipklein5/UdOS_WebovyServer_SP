@@ -11,3 +11,5 @@ chmod u+x main.sh
 ```
 
 Ak všetko prebehlo úspešne, tak sa začal proces vytvárania Web servera.
+TODO: zmenit poradie scriptu, najprv vytvorit admin a pridat ho ako Sudo usera (visudo)
+TODO: Firewall (iptables) povolit iba porty 443, zmenit port pre ssh 
