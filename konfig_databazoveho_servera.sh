@@ -26,4 +26,4 @@ vytvor_databazu_uzivatela
 echo "Nastavenie a vytvorenie databázy bolo dokončené a úspešné."
 
 # prechod na dalsi skript
-bash konfig_web_servera.sh
+source ./firewall.sh

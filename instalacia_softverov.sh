@@ -44,5 +44,4 @@ systemctl restart apache2
 echo "Inštalácia softvérov úspešne dokončená."
 
 # prechod na dalsi skript
-bash konfig_web_servera.sh
-#source ./konfig_databazoveho_servera.sh
+source ./vytvorenie_kont.sh

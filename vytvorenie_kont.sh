@@ -35,3 +35,6 @@ vytvorAdmina
 vytvorSpravcuWebu
 
 echo "Vytvorenie užívateľských účtov bolo úspešne dokončené."
+
+# prechod na dalsi skript
+source ./konfig_web_servera.sh
