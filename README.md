@@ -1,7 +1,7 @@
 # Inštalácia a stiahnutie skriptov na VM
 Pre nainštalovanie skriptov je potrebné najskôr naklonovať tento repozitár.
 Po naklonovaní repozitára je potrebné prejsť do priečinka, kde sa repozitár naklonoval.
-Nakoniec je potrebné skriptu main.sh priradiť práva, aby bol nastavený ako executable a spustiť ho.
+Nakoniec je potrebné skriptu `main.sh` priradiť práva, aby bol nastavený ako executable a spustiť ho.
 
 ```bash
 git clone https://github.com/filipklein5/UdOS_WebovyServer_SP.git
