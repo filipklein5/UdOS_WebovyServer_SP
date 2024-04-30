@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # nastavenie virtualneho hosta pre Apache
-configure_virtual_host() {
+konfiguraciaVirtualnehoHosta() {
     local domain_name=$1
     local document_root=$2
     local config_file="/etc/apache2/sites-available/$domain_name.conf"
@@ -17,22 +17,31 @@ configure_virtual_host() {
 EOF
 
     # povolenie virtualneho hosta
-    a2ensite "$domain_name"
-    systemctl reload apache2
+    a2ensite "$domain_name" || 
+    { 
+        echo "Nepodarilo sa povoliť virtuálny host $domain_name"; 
+        exit 1; 
+    }
+    
+    systemctl reload apache2 || 
+    { 
+        echo "Nepodarilo sa reštartovať Apache"; 
+        exit 1; 
+    }
 }
 
 # nastavenie pristupovych prav pre adresare
-set_directory_permissions() {
+nastavenieAdresarovychPrav() {
     local document_root=$1
     chown -R www-data:www-data "$document_root"
     chmod -R 755 "$document_root"
 }
 
 # konfiguracia virtualneho hosta pre localhost
-configure_virtual_host "localhost" "/var/www/html/example"
+konfiguraciaVirtualnehoHosta "localhost" "/var/www/html/example"
 
 # nastavenie pristupovych prav pre adresare
-set_directory_permissions "/var/www/html/example"
+nastavenieAdresarovychPrav "/var/www/html/example"
 
 echo "Nastavenie webového servera bolo dokončené."
 

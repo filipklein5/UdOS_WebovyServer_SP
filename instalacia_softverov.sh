@@ -11,14 +11,17 @@ nainstalujBalicek() {
         else
             read -rp "Inštalácia balíčku $nazovBalicka zlyhala. Chcete skúsiť inštaláciu znovz? [a/n]: " moznost
             case $moznost in
-                [Aa]* ) 
-                    continue;;
-                [Nn]* ) 
-                    echo "Inštalácia balíčku $nazovBalicka byla prerušená užívateľom."; 
-                    exit;;
+                [Aa]) 
+                    continue
+                    ;;
+                [Nn]) 
+                    echo "Inštalácia balíčku $nazovBalicka byla prerušená užívateľom."
+                    exit
+                    ;;
                 * ) 
-                    echo "Prosím, zadajte 'a' pre pokračovanie alebo 'n' pre ukončenie."; 
-                    continue;;
+                    echo "Prosím, zadajte 'a' pre pokračovanie alebo 'n' pre ukončenie." 
+                    continue
+                    ;;
             esac
         fi
     done
@@ -41,4 +44,5 @@ systemctl restart apache2
 echo "Inštalácia softvérov úspešne dokončená."
 
 # prechod na dalsi skript
-bash konfig_databazoveho_servera.sh
+bash konfig_web_servera.sh
+#source ./konfig_databazoveho_servera.sh
