@@ -33,7 +33,7 @@ vytvorSpravcuWebu() {
     echo "$spravca_webu_heslo" > spravca_webu_heslo.txt
 
     # nastavenie pristupu do /var/www/html/
-    sudo chown "$spravca_webu_meno":www-data /var/www/html/
+    sudo chown "$spravca_webu_meno":www-data /var/www/html/udos_webserver/
 
     # nastavenie chroot pre spravcu
     {

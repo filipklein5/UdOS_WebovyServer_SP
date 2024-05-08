@@ -39,10 +39,10 @@ nastavenieAdresarovychPrav() {
 }
 
 # konfiguracia virtualneho hosta pre localhost
-konfiguraciaVirtualnehoHosta "localhost" "/var/www/html/"
+konfiguraciaVirtualnehoHosta "localhost" "/var/www/html/udos_webserver/"
 
 # nastavenie pristupovych prav pre adresare
-nastavenieAdresarovychPrav "/var/www/html/"
+nastavenieAdresarovychPrav "/var/www/html/udos_webserver/"
 
 echo "Nastavenie webového servera bolo dokončené."
 
