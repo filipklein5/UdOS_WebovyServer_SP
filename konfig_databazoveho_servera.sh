@@ -2,31 +2,20 @@
 
 # funkcia pre vytvorenie databázy a užívateľa
 vytvor_databazu_uzivatela() {
-    while true; do
-        echo -e "\nZadajte meno správcu webového servera:"
-        read -r uzivatel_db
-
-        echo -e "\nZadajte heslo správcu webového servera:"
-        read -rs heslo_db
-
-        # kontrola prihlásenia
-        if mysql -u "$uzivatel_db" -p"$heslo_db" -e "exit"; then
-            break
-        else
-            echo -e "\nNesprávne meno alebo heslo. Skúste znova."
-        fi
-    done
+    # načítanie mena a hesla správcu z textových súborov
+    read -r uzivatel_db < spravca_webu.txt
+    read -r heslo_db < spravca_webu_heslo.txt
 
     echo -e "\nZadajte názov databázy:"
     read -r nazov_db
 
     # vytvorenie databázy
-    mysql -u "$uzivatel_db" -p"$heslo_db" -e "CREATE DATABASE IF NOT EXISTS $nazov_db;"
+    mysql -u "$uzivatel_db" -p "$heslo_db" -e "CREATE DATABASE IF NOT EXISTS $nazov_db;"
 
     # vytvorenie užívateľa a pridelenie oprávnení pre databázu
-    mysql -u "$uzivatel_db" -p"$heslo_db" -e "CREATE USER '$uzivatel_db'@'localhost' IDENTIFIED BY '$heslo_db';"
-    mysql -u "$uzivatel_db" -p"$heslo_db" -e "GRANT ALL PRIVILEGES ON $nazov_db.* TO '$uzivatel_db'@'localhost';"
-    mysql -u "$uzivatel_db" -p"$heslo_db" -e "FLUSH PRIVILEGES;"
+    mysql -u "$uzivatel_db" -p "$heslo_db" -e "CREATE USER '$uzivatel_db'@'localhost' IDENTIFIED BY '$heslo_db';"
+    mysql -u "$uzivatel_db" -p "$heslo_db" -e "GRANT ALL PRIVILEGES ON $nazov_db.* TO '$uzivatel_db'@'localhost';"
+    mysql -u "$uzivatel_db" -p "$heslo_db" -e "FLUSH PRIVILEGES;"
 }
 
 # nastavenie databázy pre webovú aplikáciu
