@@ -33,8 +33,8 @@ EOF
 # nastavenie pristupovych prav pre adresare
 nastavenieAdresarovychPrav() {
     local document_root=$1
-    chown -R www-data:www-data "$document_root"
-    chmod -R 755 "$document_root"
+    sudo chown -R www-data:www-data "$document_root"
+    sudo chmod -R 755 "$document_root"
 }
 
 # konfiguracia virtualneho hosta pre localhost

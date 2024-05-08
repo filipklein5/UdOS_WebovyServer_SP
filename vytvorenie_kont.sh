@@ -6,13 +6,13 @@ vytvorAdmina() {
     read -r admin_meno
 
     # vytvorenie admina
-    useradd -m -s /bin/bash "$admin_meno"
+    sudo useradd -m -s /bin/bash "$admin_meno"
 
     # nastavenie hesla pre admina
     echo "Nastavenie hesla pre užívateľa $admin_meno: "
-    passwd "$admin_meno"
+    sudo passwd "$admin_meno"
 
-    usermod -aG sudo "$admin_meno"
+    sudo usermod -aG sudo "$admin_meno"
 }
 
 # vytvorenie uzivatelskeho uctu pre spravcu webovej aplikacie
@@ -32,9 +32,8 @@ vytvorSpravcuWebu() {
     echo "$spravca_webu_meno" > spravca_webu.txt
     echo "$spravca_webu_heslo" > spravca_webu_heslo.txt
 
-    # nastavenie pristupu do /var/www/html/SP_udos_webserver
-    chown "$spravca_webu_meno":www-data /var/www/html/SP_udos_webserver
-    chmod 750 /var/www/html/SP_udos_webserver
+    # nastavenie pristupu do /var/www/html/
+    sudo chown "$spravca_webu_meno":www-data /var/www/html/
 
     # nastavenie chroot pre spravcu
     {

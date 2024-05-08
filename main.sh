@@ -2,10 +2,10 @@
 
 # nespustat script ako root
 if [ "$(id -u)" = 0 ]; then
-    echo "Ste prihlásený ako root. Pokračujeme v inštalácií"
-else 
-    echo "Skript musíte spustiť ako root. Skript končí."
+    echo "Ste prihlásený ako root, ukončujem inštaláciu."
     exit 1
+else 
+    echo "Ste prihlásený ako non-root user, pokračujeme v inštalácií"
 fi
 
 
@@ -17,26 +17,20 @@ else
     exit 1
 fi
 
-echo -e "\nPred pustením skriptu je potrebný update.\n"
-apt update -y && apt upgrade -y
-# apt update
+echo -e "\nNastavenie lokálneho času.\n"
+sudo timedatectl set-timezone Europe/Bratislava
 
-# adresar s webovou aplikaciou
-webovyServerDir="/var/www/html/SP_udos_webserver"
-mkdir -p $webovyServerDir
+echo -e "\nPred pustením skriptu je potrebný update.\n"
+sudo apt update -y && apt upgrade -y
+# apt update
 
 # vsetky subory su nastavenne ako spustitelne
 for subor in *.sh; do
     if [ -f "$subor" ]; then
-        chmod +x "$subor"
+        sudo chmod +x "$subor"
     fi
 done
 echo -e "\nVšetky súbory v priečinku boli úspešne nastavené na spustiteľné.\n"
 
-# nastavenie opravneni pre adresar aplikacie
-chown -R www-data:www-data "$webovyServerDir"
-chmod -R 755 "$webovyServerDir"
-
 # prechod na dalsi skript
-# TODO: skusit ci to funguje
 source $HOME/UdOS_WebovyServer_SP/instalacia_softverov.sh

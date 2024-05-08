@@ -4,8 +4,8 @@
 nainstalujBalicek() {
     local nazovBalicka=$1
     while true; do
-        apt install -y "$nazovBalicka"
-        if apt install -y "$nazovBalicka"; then
+        sudo apt install -y "$nazovBalicka"
+        if sudo apt install -y "$nazovBalicka"; then
             echo -e "\nBalíček $nazovBalicka bol úspešne nainštalovaný.\n"
             break
         else
@@ -43,7 +43,7 @@ nainstalujBalicek "iptables"
 nainstalujBalicek "netfilter-persistent"
 
 # restartovanie apache pre spustenie
-systemctl reload apache2
+sudo systemctl reload apache2
 
 echo -e "\nInštalácia softvérov bola úspešne dokončená.\n"
 

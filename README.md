@@ -28,3 +28,5 @@ NAJLEPSIE riesenie
 1. pri instalaci rootovi nedat heslo - vypnut ho
 
 2. pocas instalacie VM sa vytvori admin ucet, bude sucast groupy sudo a po spusteni skriptu mozme dat to, ze sa bud dalsi admin vytvori alebo nie
+
+UROBIT spravny cas cez timezone do skriptu
