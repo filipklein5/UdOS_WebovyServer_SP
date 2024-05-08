@@ -26,7 +26,7 @@ vytvorSpravcuWebu() {
     # Nastavení hesla pre uzivatela
     echo "Nastavenie hesla pre užívateľa $spravca_webu_meno: "
     read -r spravca_webu_heslo
-    echo "$spravca_webu_heslo" | passwd --stdin "$spravca_webu_meno"
+    echo "$spravca_webu_heslo" | sudo passwd --stdin "$spravca_webu_meno"
 
     # ulozenie mena a hesla spravcu do suborov
     echo "$spravca_webu_meno" > spravca_webu.txt
@@ -41,7 +41,7 @@ vytvorSpravcuWebu() {
     echo "    ChrootDirectory %h";
     echo "    AllowTCPForwarding no";
     echo "    X11Forwarding no";
-    } >> /etc/ssh/sshd_config
+    } | sudo tee -a /etc/ssh/sshd_config >/dev/null
 }
 
 # hlavna funkcia
