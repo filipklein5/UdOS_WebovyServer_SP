@@ -42,7 +42,7 @@ nainstalujBalicek "php-mysql"
 nainstalujBalicek "iptables"
 
 # restartovanie apache pre spustenie
-systemctl restart apache2
+sudo systemctl restart apache2
 
 echo "Inštalácia softvérov úspešne dokončená."
 

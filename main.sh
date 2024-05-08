@@ -20,6 +20,7 @@ else
     exit 1
 fi
 
+echo "Pred pustením skriptu je potrebný update"
 sudo apt update -y && sudo apt upgrade -y
 # apt update
 
