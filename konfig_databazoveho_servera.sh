@@ -2,11 +2,20 @@
 
 # funkcia pre vytvorenie databázy a užívateľa
 vytvor_databazu_uzivatela() {
-    echo -e "\nZadajte meno správcu webového servera:"
-    read -r uzivatel_db
+    while true; do
+        echo -e "\nZadajte meno správcu webového servera:"
+        read -r uzivatel_db
 
-    echo -e "\nZadajte heslo správcu webového servera:"
-    read -rs heslo_db
+        echo -e "\nZadajte heslo správcu webového servera:"
+        read -rs heslo_db
+
+        # kontrola prihlásenia
+        if mysql -u "$uzivatel_db" -p"$heslo_db" -e "exit"; then
+            break
+        else
+            echo -e "\nNesprávne meno alebo heslo. Skúste znova."
+        fi
+    done
 
     echo -e "\nZadajte názov databázy:"
     read -r nazov_db
