@@ -2,9 +2,11 @@
 
 # funkcia pre vytvorenie databázy a užívateľa
 vytvor_databazu_uzivatela() {
-    # nacitanie mena a hesla spravcu z suborov
-    uzivatel_db=$(cat spravca_webu.txt)
-    heslo_db=$(cat spravca_webu_heslo.txt)
+    echo -e "\nZadajte meno správcu webového servera:"
+    read -r uzivatel_db
+
+    echo -e "\nZadajte heslo správcu webového servera:"
+    read -rs heslo_db
 
     echo -e "\nZadajte názov databázy:"
     read -r nazov_db

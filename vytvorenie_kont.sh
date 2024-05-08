@@ -25,7 +25,7 @@ vytvorSpravcuWebu() {
 
     # Nastavení hesla pre uzivatela
     echo "Nastavenie hesla pre užívateľa $spravca_webu_meno: "
-    read -r spravca_webu_heslo
+    read -rs spravca_webu_heslo
     echo "$spravca_webu_heslo" | sudo passwd --stdin "$spravca_webu_meno" > /dev/null 2>&1
 
     # ulozenie mena a hesla spravcu do suborov
