@@ -6,13 +6,13 @@ vytvorAdmina() {
     read -r admin_meno
 
     # vytvorenie admina
-    sudo useradd -m -s /bin/bash "$admin_meno"
+    useradd -m -s /bin/bash "$admin_meno"
 
     # nastavenie hesla pre admina
     echo "Nastavenie hesla pre užívateľa $admin_meno: "
-    sudo passwd "$admin_meno"
+    passwd "$admin_meno"
 
-    sudo usermod -aG sudo "$admin_meno"
+    usermod -aG sudo "$admin_meno"
 }
 
 # vytvorenie uzivatelskeho uctu pre spravcu webovej aplikacie
@@ -21,11 +21,11 @@ vytvorSpravcuWebu() {
     read -r spravca_webu_meno
 
     # vytvorenie uzivatela
-    sudo useradd -m -s /bin/bash "$spravca_webu_meno"
+    useradd -m -s /bin/bash "$spravca_webu_meno"
 
     # Nastavení hesla pre uzivatela
     echo "Nastavenie hesla pre užívateľa $spravca_webu_meno: "
-    sudo passwd "$spravca_webu_meno"
+    passwd "$spravca_webu_meno"
 }
 
 # vytvorenie adminovskeho uctu

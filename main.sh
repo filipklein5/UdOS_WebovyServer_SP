@@ -2,15 +2,12 @@
 
 # nespustat script ako root
 if [ "$(id -u)" = 0 ]; then
-    echo "Tento skript sa nemôže spustiť ako root. Skúste to znova ako obyčajný používateľ."
+    echo "Ste prihlásený ako root. Pokračujeme v inštalácií"
+else 
+    echo "Skript musíte spustiť ako root. Skript končí."
     exit 1
 fi
 
-# skontrolujte, ci pouzivatel ma domovsky priecinok
-if [ ! -d "/home/$USER" ]; then
-    echo "Nemáte domovský priečinok. Skript končí."
-    exit 1
-fi
 
 # skontrolujte pripojenie na internet pingnutim Google servera
 if ping -q -c 1 -W 5 www.google.com >/dev/null; then
@@ -21,7 +18,7 @@ else
 fi
 
 echo "Pred pustením skriptu je potrebný update"
-sudo apt update -y && sudo apt upgrade -y
+apt update -y && apt upgrade -y
 # apt update
 
 # adresar s webovou aplikaciou

@@ -4,8 +4,8 @@
 nainstalujBalicek() {
     local nazovBalicka=$1
     while true; do
-        sudo apt install -y "$nazovBalicka"
-        if sudo apt install -y "$nazovBalicka"; then
+        apt install -y "$nazovBalicka"
+        if apt install -y "$nazovBalicka"; then
             echo "Balíček $nazovBalicka bol úspešne nainštalovaný."
             break
         else
@@ -42,7 +42,7 @@ nainstalujBalicek "php-mysql"
 nainstalujBalicek "iptables"
 
 # restartovanie apache pre spustenie
-sudo systemctl restart apache2
+systemctl restart apache2
 
 echo "Inštalácia softvérov úspešne dokončená."
 
