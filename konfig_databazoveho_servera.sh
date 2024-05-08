@@ -10,12 +10,12 @@ vytvor_databazu_uzivatela() {
     read -r nazov_db
 
     # vytvorenie databázy
-    mysql -e "CREATE DATABASE IF NOT EXISTS $nazov_db;"
+    mysql -u "$uzivatel_db" -p"$heslo_db" -e "CREATE DATABASE IF NOT EXISTS $nazov_db;"
 
     # vytvorenie užívateľa a pridelenie oprávnení pre databázu
-    mysql -e "CREATE USER '$uzivatel_db'@'localhost' IDENTIFIED BY '$heslo_db';"
-    mysql -e "GRANT ALL PRIVILEGES ON $nazov_db.* TO '$uzivatel_db'@'localhost';"
-    mysql -e "FLUSH PRIVILEGES;"
+    mysql -u "$uzivatel_db" -p"$heslo_db" -e "CREATE USER '$uzivatel_db'@'localhost' IDENTIFIED BY '$heslo_db';"
+    mysql -u "$uzivatel_db" -p"$heslo_db" -e "GRANT ALL PRIVILEGES ON $nazov_db.* TO '$uzivatel_db'@'localhost';"
+    mysql -u "$uzivatel_db" -p"$heslo_db" -e "FLUSH PRIVILEGES;"
 }
 
 # nastavenie databázy pre webovú aplikáciu
