@@ -21,7 +21,7 @@ echo -e "\nNastavenie lokálneho času.\n"
 sudo timedatectl set-timezone Europe/Bratislava
 
 echo -e "\nPred pustením skriptu je potrebný update.\n"
-sudo apt update -y && apt upgrade -y
+sudo apt update -y && sudo apt upgrade -y
 # apt update
 
 # vsetky subory su nastavenne ako spustitelne

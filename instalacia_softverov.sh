@@ -28,7 +28,7 @@ nainstalujBalicek() {
 }
 
 # instalacia balickov
-nainstalujBalicek "apache"
+nainstalujBalicek "apache2"
 
 # instalacia mariadb
 nainstalujBalicek "mariadb-server"
