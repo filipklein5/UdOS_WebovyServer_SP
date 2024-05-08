@@ -2,14 +2,12 @@
 
 # funkcia pre vytvorenie databázy a užívateľa
 vytvor_databazu_uzivatela() {
-    echo "Zadajte názov databázy:"
+    # nacitanie mena a hesla spravcu z suborov
+    uzivatel_db=$(cat spravca_webu.txt)
+    heslo_db=$(cat spravca_webu_heslo.txt)
+
+    echo -e "\nZadajte názov databázy:"
     read -r nazov_db
-
-    echo "Zadajte užívateľské meno pre databázu:"
-    read -r uzivatel_db
-
-    echo "Zadajte heslo pre užívateľa databázy:"
-    read -r heslo_db
 
     # vytvorenie databázy
     mysql -e "CREATE DATABASE IF NOT EXISTS $nazov_db;"

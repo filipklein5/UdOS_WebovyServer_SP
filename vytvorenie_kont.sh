@@ -25,14 +25,49 @@ vytvorSpravcuWebu() {
 
     # Nastavení hesla pre uzivatela
     echo "Nastavenie hesla pre užívateľa $spravca_webu_meno: "
-    passwd "$spravca_webu_meno"
+    read -r spravca_webu_heslo
+    echo "$spravca_webu_heslo" | passwd --stdin "$spravca_webu_meno"
+
+    # ulozenie mena a hesla spravcu do suborov
+    echo "$spravca_webu_meno" > spravca_webu.txt
+    echo "$spravca_webu_heslo" > spravca_webu_heslo.txt
+
+    # nastavenie pristupu do /var/www/html/SP_udos_webserver
+    chown "$spravca_webu_meno":www-data /var/www/html/SP_udos_webserver
+    chmod 750 /var/www/html/SP_udos_webserver
+
+    # nastavenie chroot pre spravcu
+    {
+    echo "Match User $spravca_webu_meno";
+    echo "    ChrootDirectory %h";
+    echo "    AllowTCPForwarding no";
+    echo "    X11Forwarding no";
+    } >> /etc/ssh/sshd_config
 }
 
-# vytvorenie adminovskeho uctu
-vytvorAdmina
+# hlavna funkcia
+vytvorUcty() {
+    vytvorSpravcuWebu
 
-# vytvorenie uctu pre spravcu webovej aplikacie...
-vytvorSpravcuWebu
+    PS3='Chcete okrem vytvoreného admin účtu vytvoriť ďalší? '
+    options=("ano" "nie")
+    select opt in "${options[@]}"
+    do
+        case $opt in
+            "ano")
+                vytvorAdmina
+                break
+                ;;
+            "nie")
+                break
+                ;;
+            *) echo "Neplatná voľba $REPLY";;
+        esac
+    done
+}
+
+# vytvorenie uctov
+vytvorUcty
 
 echo "Vytvorenie užívateľských účtov bolo úspešne dokončené."
 

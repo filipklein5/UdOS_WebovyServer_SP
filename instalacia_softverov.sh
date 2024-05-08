@@ -6,7 +6,7 @@ nainstalujBalicek() {
     while true; do
         apt install -y "$nazovBalicka"
         if apt install -y "$nazovBalicka"; then
-            echo "Balíček $nazovBalicka bol úspešne nainštalovaný."
+            echo -e "\nBalíček $nazovBalicka bol úspešne nainštalovaný.\n"
             break
         else
             read -rp "Inštalácia balíčku $nazovBalicka zlyhala. Chcete skúsiť inštaláciu znovz? [a/n]: " moznost
@@ -28,7 +28,7 @@ nainstalujBalicek() {
 }
 
 # instalacia balickov
-nainstalujBalicek "apache2"
+nainstalujBalicek "apache"
 
 # instalacia mariadb
 nainstalujBalicek "mariadb-server"
@@ -38,13 +38,14 @@ nainstalujBalicek "php"
 nainstalujBalicek "libapache2-mod-php"
 nainstalujBalicek "php-mysql"
 
-#instalacia iptables
+#instalacia sucasti firewallu
 nainstalujBalicek "iptables"
+nainstalujBalicek "netfilter-persistent"
 
 # restartovanie apache pre spustenie
-systemctl restart apache2
+systemctl reload apache2
 
-echo "Inštalácia softvérov úspešne dokončená."
+echo -e "\nInštalácia softvérov bola úspešne dokončená.\n"
 
 # prechod na dalsi skript
 source $HOME/UdOS_WebovyServer_SP/vytvorenie_kont.sh

@@ -17,19 +17,21 @@ else
     exit 1
 fi
 
-echo "Pred pustením skriptu je potrebný update"
+echo -e "\nPred pustením skriptu je potrebný update.\n"
 apt update -y && apt upgrade -y
 # apt update
 
 # adresar s webovou aplikaciou
 webovyServerDir="/var/www/html/SP_udos_webserver"
+mkdir -p $webovyServerDir
 
+# vsetky subory su nastavenne ako spustitelne
 for subor in *.sh; do
     if [ -f "$subor" ]; then
         chmod +x "$subor"
     fi
 done
-echo "Všetky súbory v priečinku boli úspešne nastavené na spustiteľné."
+echo -e "\nVšetky súbory v priečinku boli úspešne nastavené na spustiteľné.\n"
 
 # nastavenie opravneni pre adresar aplikacie
 chown -R www-data:www-data "$webovyServerDir"

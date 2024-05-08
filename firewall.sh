@@ -1,22 +1,18 @@
 #!/bin/bash
-iptables -F
 
+# Allow incoming traffic on ports 443 and 2222
 iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+iptables -A INPUT -p tcp --dport 2222 -j ACCEPT
 
-sed -i 's/#Port 22/Port 2222/g' /etc/ssh/sshd_config
+# Set default policy to DROP
+iptables -P INPUT DROP
 
-iptables -A INPUT -j DROP
+systemctl enable netfilter-persistent
 
-iptables-save > /etc/iptables.up.rules
-
-cat << EOF > /etc/network/if-pre-up.d/iptables
-#!/bin/sh
-/sbin/iptables-restore < /etc/iptables.up.rules
-EOF
-
-chmod +x /etc/network/if-pre-up.d/iptables
+systemctl restart netfilter-persistent
 
 #service ssh restart
+sed -i 's/#Port 22/Port 2222/g' /etc/ssh/sshd_config
 systemctl restart sshd
 
-echo "Firewall bol nastavený a SSH port zmenený na 2222."
+echo -e "\nFirewall bol nastavený a SSH port zmenený na 2222.\n"
