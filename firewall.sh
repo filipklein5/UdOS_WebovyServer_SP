@@ -1,8 +1,11 @@
 #!/bin/bash
 
 # Allow incoming traffic on ports 443 and 2222
+sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 sudo iptables -A INPUT -p tcp --dport 2222 -j ACCEPT
+
+sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
 # Set default policy to DROP
 sudo iptables -P INPUT DROP
