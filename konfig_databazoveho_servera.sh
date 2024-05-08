@@ -9,16 +9,13 @@ vytvor_databazu_uzivatela() {
     echo -e "\nZadajte názov databázy:"
     read -r nazov_db
 
-    echo -e "\nZadajte heslo pre admin užívateľa:"
-    read -rs admin_password
-
     # vytvorenie databázy
-    echo "$admin_password" | sudo -S mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS $nazov_db;"
+    sudo mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS $nazov_db;"
 
     # vytvorenie užívateľa a pridelenie oprávnení pre databázu
-    echo "$admin_password" | sudo -S mysql -u root -p -e "CREATE USER '$uzivatel_db'@'localhost' IDENTIFIED BY '$heslo_db';"
-    echo "$admin_password" | sudo -S mysql -u root -p -e "GRANT ALL PRIVILEGES ON $nazov_db.* TO '$uzivatel_db'@'localhost';"
-    echo "$admin_password" | sudo -S mysql -u root -p -e "FLUSH PRIVILEGES;"
+    sudo mysql -u root -p -e "CREATE USER '$uzivatel_db'@'localhost' IDENTIFIED BY '$heslo_db';"
+    sudo mysql -u root -p -e "GRANT ALL PRIVILEGES ON $nazov_db.* TO '$uzivatel_db'@'localhost';"
+    sudo mysql -u root -p -e "FLUSH PRIVILEGES;"
 }
 
 # nastavenie databázy pre webovú aplikáciu
