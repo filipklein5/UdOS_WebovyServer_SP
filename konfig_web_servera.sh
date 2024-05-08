@@ -33,6 +33,7 @@ EOF
 # nastavenie pristupovych prav pre adresare
 nastavenieAdresarovychPrav() {
     local document_root=$1
+    sudo mkdir -p "$document_root"
     sudo chown -R www-data:www-data "$document_root"
     sudo chmod -R 755 "$document_root"
 }
