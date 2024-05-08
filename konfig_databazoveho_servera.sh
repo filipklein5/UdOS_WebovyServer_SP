@@ -7,15 +7,20 @@ vytvor_databazu_uzivatela() {
     read -r heslo_db < spravca_webu_heslo.txt
 
     echo -e "\nZadajte názov databázy:"
+
     read -r nazov_db
 
     # vytvorenie databázy
-    mysql -u "$uzivatel_db" -p "$heslo_db" -e "CREATE DATABASE IF NOT EXISTS $nazov_db;"
+    sudo mysql -u "$uzivatel_db" -p"$heslo_db" -e "CREATE DATABASE IF NOT EXISTS $nazov_db;"
 
     # vytvorenie užívateľa a pridelenie oprávnení pre databázu
-    mysql -u "$uzivatel_db" -p "$heslo_db" -e "CREATE USER '$uzivatel_db'@'localhost' IDENTIFIED BY '$heslo_db';"
-    mysql -u "$uzivatel_db" -p "$heslo_db" -e "GRANT ALL PRIVILEGES ON $nazov_db.* TO '$uzivatel_db'@'localhost';"
-    mysql -u "$uzivatel_db" -p "$heslo_db" -e "FLUSH PRIVILEGES;"
+    sudo mysql -u "$uzivatel_db" -p"$heslo_db" -e "CREATE USER '$uzivatel_db'@'localhost' IDENTIFIED BY '$heslo_db';"
+    sudo mysql -u "$uzivatel_db" -p"$heslo_db" -e "GRANT ALL PRIVILEGES ON $nazov_db.* TO '$uzivatel_db'@'localhost';"
+    sudo mysql -u "$uzivatel_db" -p"$heslo_db" -e "FLUSH PRIVILEGES;"
+
+    # kontrola oprávnení užívateľa
+    echo "Kontrola oprávnení užívateľa:"
+    sudo mysql -u "$uzivatel_db" -p"$heslo_db" -e "SHOW GRANTS FOR '$uzivatel_db'@'localhost';"
 }
 
 # nastavenie databázy pre webovú aplikáciu
