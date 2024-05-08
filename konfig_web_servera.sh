@@ -23,7 +23,7 @@ EOF
         exit 1; 
     }
     
-    systemctl reload apache2 || 
+    sudo systemctl reload apache2 || 
     { 
         echo "Nepodarilo sa reštartovať Apache"; 
         exit 1; 
