@@ -4,8 +4,8 @@
 nainstalujBalicek() {
     local nazovBalicka=$1
     while true; do
-        apt install -y "$nazovBalicka"
-        if apt install -y "$nazovBalicka"; then
+        sudo apt install -y "$nazovBalicka"
+        if sudo apt install -y "$nazovBalicka"; then
             echo "Balíček $nazovBalicka bol úspešne nainštalovaný."
             break
         else
@@ -47,4 +47,4 @@ systemctl restart apache2
 echo "Inštalácia softvérov úspešne dokončená."
 
 # prechod na dalsi skript
-source ./vytvorenie_kont.sh
+source $HOME/UdOS_WebovyServer_SP/vytvorenie_kont.sh

@@ -16,6 +16,7 @@ EOF
 
 chmod +x /etc/network/if-pre-up.d/iptables
 
-service ssh restart
+#service ssh restart
+sudo systemctl restart sshd
 
-echo "Firewall nastavený a SSH port zmenený na 2222."
+echo "Firewall bol nastavený a SSH port zmenený na 2222."

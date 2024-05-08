@@ -26,4 +26,4 @@ vytvor_databazu_uzivatela
 echo "Nastavenie a vytvorenie databázy bolo dokončené a úspešné."
 
 # prechod na dalsi skript
-source ./firewall.sh
+source $HOME/UdOS_WebovyServer_SP/firewall.sh
