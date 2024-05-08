@@ -6,7 +6,7 @@ konfiguraciaVirtualnehoHosta() {
     local document_root=$2
     local config_file="/etc/apache2/sites-available/$domain_name.conf"
 
-    cat << EOF > "$config_file"
+    cat << EOF | sudo tee "$config_file" >/dev/null
 <VirtualHost *:80>
     ServerAdmin webmaster@$domain_name
     ServerName $domain_name
@@ -17,7 +17,7 @@ konfiguraciaVirtualnehoHosta() {
 EOF
 
     # povolenie virtualneho hosta
-    a2ensite "$domain_name" || 
+    sudo a2ensite "$domain_name" || 
     { 
         echo "Nepodarilo sa povoliť virtuálny host $domain_name"; 
         exit 1; 

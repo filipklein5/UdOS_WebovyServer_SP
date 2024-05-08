@@ -21,7 +21,7 @@ vytvorSpravcuWebu() {
     read -r spravca_webu_meno
 
     # vytvorenie uzivatela
-    useradd -m -s /bin/bash "$spravca_webu_meno"
+    sudo useradd -m -s /bin/bash "$spravca_webu_meno"
 
     # Nastavení hesla pre uzivatela
     echo "Nastavenie hesla pre užívateľa $spravca_webu_meno: "
