@@ -40,6 +40,11 @@ nainstalujBalicek "php-mysql"
 
 #instalacia sucasti firewallu
 nainstalujBalicek "iptables"
+
+#namapovanie iptables (ak by neslo...)
+#export PATH=$PATH:/sbin
+#source ./.bashrc
+
 nainstalujBalicek "netfilter-persistent"
 
 # restartovanie apache pre spustenie
