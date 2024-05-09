@@ -19,6 +19,7 @@ vytvor_databazu_uzivatela() {
     # vytvorenie užívateľa a pridelenie oprávnení pre databázu
     echo "$heslo_admina" | sudo -S mysql -u root -p"$heslo_admina" -e "CREATE USER '$uzivatel_db'@'localhost' IDENTIFIED BY '$heslo_db';"
     echo -e "\nUcet s menom $uzivatel_db bol zapisany do databazy.\n"
+    # pridelenie prav konkretnemu uzivatelovi na databazu, ktoru on vytvoril...
     echo "$heslo_admina" | sudo -S mysql -u root -p"$heslo_admina" -e "GRANT ALL PRIVILEGES ON $nazov_db.* TO '$uzivatel_db'@'localhost';"
     echo -e "Uzivatel $uzivatel_db ma teraz vsetky opravnenia v databaze $nazov_db.\n"
 }
