@@ -12,8 +12,3 @@ chmod u+x main.sh
 ```
 
 Ak všetko prebehlo úspešne, tak sa začal proces vytvárania Web servera.
-
-Najprv nainstalovat apache
-zistit, odkial bude brat html subory pri pristupe na stranku
-vytvorit admina, cloveka ktory moze editovat html subory (danu stranku) a zaroven musi mať pristup ku databaze
-typ padom treba userom pridat ako groupy/opravnenia

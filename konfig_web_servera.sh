@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo -e "\n------SKRIPT KONFIG_WEBSERVERA------\n"
 # zapnutie ssl
 sudo a2enmod ssl
 
@@ -26,13 +27,13 @@ EOF
     # povolenie virtualneho hosta
     sudo a2ensite "$domain_name" || 
     { 
-        echo "Nepodarilo sa povoliť virtuálny host $domain_name"; 
+        echo "Nepodarilo sa povolit virtualny host $domain_name"; 
         exit 1; 
     }
     
     sudo systemctl reload apache2 || 
     { 
-        echo "Nepodarilo sa znovu načítať kofiguráciu Apache";
+        echo "Nepodarilo sa znovu nacitat konfiguraciu Apache";
         exit 1; 
     }
 
@@ -56,7 +57,7 @@ nastavenieAdresarovychPrav "/var/www/html/udos_webserver/"
 sudo systemctl reload apache2
 sudo systemctl restart apache2
 
-echo "Nastavenie webového servera bolo dokončené."
+echo -e "\nNastavenie weboveho servera bolo dokoncene!\n"
 
 # prechod na dalsi skript
 source $HOME/UdOS_WebovyServer_SP/konfig_databazoveho_servera.sh

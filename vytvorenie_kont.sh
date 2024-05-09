@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # vytvorenie uzivatelskeho uctu pre administratora serveru
+echo -e "\n------SKRIPT VYTVORENIE_KONT------\n"
 vytvorAdmina() {
     echo "Zadajte meno pre admina: "
     read -r admin_meno
@@ -9,7 +10,7 @@ vytvorAdmina() {
     sudo useradd -m -s /bin/bash "$admin_meno"
 
     # nastavenie hesla pre admina
-    echo "Nastavenie hesla pre užívateľa $admin_meno: "
+    echo "Nastavenie hesla pre uzivatela $admin_meno: "
     sudo passwd "$admin_meno"
 
     sudo usermod -aG sudo "$admin_meno"
@@ -17,14 +18,14 @@ vytvorAdmina() {
 
 # vytvorenie uzivatelskeho uctu pre spravcu webovej aplikacie
 vytvorSpravcuWebu() {
-    echo "Zadajte meno pre správcu webovej aplikácie: "
+    echo "Zadajte meno pre spravcu webovej aplikacie: "
     read -r spravca_webu_meno
 
     # vytvorenie uzivatela
     sudo useradd -m -s /bin/bash "$spravca_webu_meno"
 
     # Nastavení hesla pre uzivatela
-    echo "Nastavenie hesla pre užívateľa $spravca_webu_meno: "
+    echo "Nastavenie hesla pre uzivatela $spravca_webu_meno: "
     read -rs spravca_webu_heslo
     echo "$spravca_webu_heslo" | sudo passwd --stdin "$spravca_webu_meno" > /dev/null 2>&1
 
@@ -54,7 +55,7 @@ vytvorSpravcuWebu() {
 vytvorUcty() {
     vytvorSpravcuWebu
 
-    PS3='Chcete okrem vytvoreného admin účtu vytvoriť ďalší? '
+    PS3='Chcete okrem vytvoreneho admin uctu vytvorit dalsi? '
     options=("ano" "nie")
     select opt in "${options[@]}"
     do
@@ -66,7 +67,7 @@ vytvorUcty() {
             "nie")
                 break
                 ;;
-            *) echo "Neplatná voľba $REPLY";;
+            *) echo "Neplatna volba $REPLY";;
         esac
     done
 }
@@ -74,7 +75,7 @@ vytvorUcty() {
 # vytvorenie uctov
 vytvorUcty
 
-echo -e "\nVytvorenie užívateľských účtov bolo úspešne dokončené.\n"
+echo -e "\nVytvorenie uzivatelskych uctov bolo uspesne dokoncene.\n"
 
 # prechod na dalsi skript
 source $HOME/UdOS_WebovyServer_SP/konfig_web_servera.sh

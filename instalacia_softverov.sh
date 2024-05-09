@@ -1,25 +1,26 @@
 #!/bin/bash
 
 # funkcia pre instalaciu balickov a kontrolu uspesnosti v pripade chyb...
+echo -e "\n------SKRIPT INSTALACIA_SOFTVEROV------\n"
 nainstalujBalicek() {
     local nazovBalicka=$1
     while true; do
         sudo apt install -y "$nazovBalicka"
         if sudo apt install -y "$nazovBalicka"; then
-            echo -e "\nBalíček $nazovBalicka bol úspešne nainštalovaný.\n"
+            echo -e "\nBalicek $nazovBalicka bol uspesne nainstalovany.\n"
             break
         else
-            read -rp "Inštalácia balíčku $nazovBalicka zlyhala. Chcete skúsiť inštaláciu znovz? [a/n]: " moznost
+            read -rp "Instalacia balicku $nazovBalicka zlyhala. Chcete skusit instalaciu znova? [a/n]: " moznost
             case $moznost in
                 [Aa]) 
                     continue
                     ;;
                 [Nn]) 
-                    echo "Inštalácia balíčku $nazovBalicka byla prerušená užívateľom."
+                    echo "Instalacia balicku $nazovBalicka bola prerusena uzivatelom."
                     exit
                     ;;
                 * ) 
-                    echo "Prosím, zadajte 'a' pre pokračovanie alebo 'n' pre ukončenie." 
+                    echo "Prossim, zadajte 'a' pre pokracovanie alebo 'n' pre ukoncenie." 
                     continue
                     ;;
             esac
@@ -27,30 +28,23 @@ nainstalujBalicek() {
     done
 }
 
-# instalacia balickov
+# instalacia apache2
 nainstalujBalicek "apache2"
-
-# instalacia mariadb
 nainstalujBalicek "mariadb-server"
-
-# instalacia php a jeho rozsireni
 nainstalujBalicek "php"
 nainstalujBalicek "libapache2-mod-php"
 nainstalujBalicek "php-mysql"
 
-#instalacia sucasti firewallu
 nainstalujBalicek "iptables"
-
-#namapovanie iptables (ak by neslo...)
-#export PATH=$PATH:/sbin
-#source ./.bashrc
-
+export PATH=$PATH:/sbin
+source $HOME/.bashrc
 nainstalujBalicek "netfilter-persistent"
+
+nainstalujBalicek "nodejs"
 
 # restartovanie apache pre spustenie
 sudo systemctl reload apache2
 
-echo -e "\nInštalácia softvérov bola úspešne dokončená.\n"
+echo -e "\Instalacia softverov bola uspesne dokoncena!\n"
 
-# prechod na dalsi skript
 source $HOME/UdOS_WebovyServer_SP/vytvorenie_kont.sh
