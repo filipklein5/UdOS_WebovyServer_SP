@@ -1,4 +1,4 @@
-# Inštalácia a stiahnutie skriptov na VM
+# Inštalácia webového servera na distribúciu Debian
 
 Pre nainštalovanie skriptov je potrebné najskôr naklonovať tento repozitár.
 Po naklonovaní repozitára je potrebné prejsť do priečinka, kde sa repozitár naklonoval.
@@ -11,4 +11,4 @@ chmod u+x main.sh
 ./main.sh
 ```
 
-Ak všetko prebehlo úspešne, tak sa začal proces vytvárania Web servera.
+Ak všetko prebehlo úspešne, tak sa začal proces vytvárania a konfigurácie webového servera.
