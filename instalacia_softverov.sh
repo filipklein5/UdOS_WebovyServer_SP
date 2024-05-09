@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # funkcia pre instalaciu balickov a kontrolu uspesnosti v pripade chyb...
-echo -e "\n------SKRIPT INSTALACIA_SOFTVEROV------\n"
+echo -e "\n------INSTALACIA SOFTVEROV------\n"
 nainstalujBalicek() {
     local nazovBalicka=$1
     while true; do

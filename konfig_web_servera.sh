@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -e "\n------SKRIPT KONFIG_WEBSERVERA------\n"
+echo -e "\n------KONFIG WEBSERVERA------\n"
 # zapnutie ssl
 sudo a2enmod ssl
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -e "\n------SKRIPT FIREWALL------\n"
+echo -e "\n------FIREWALL------\n"
 # povolit ip trafiku na tieto porty...
 sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 sudo iptables -A INPUT -p tcp --dport 2222 -j ACCEPT

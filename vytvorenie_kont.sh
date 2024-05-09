@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # vytvorenie uzivatelskeho uctu pre administratora serveru
-echo -e "\n------SKRIPT VYTVORENIE_KONT------\n"
+echo -e "\n------VYTVORENIE KONT------\n"
 vytvorAdmina() {
     echo "Zadajte meno pre admina: "
     read -r admin_meno
