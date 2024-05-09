@@ -48,7 +48,6 @@ EOF
 # nastavenie pristupovych prav pre adresare
 nastavenieAdresarovychPrav() {
     local document_root=$1
-    sudo mkdir -p "$document_root"
     sudo chown -R www-data:www-data "$document_root"
     sudo chmod -R 755 "$document_root"
 }
@@ -58,9 +57,6 @@ konfiguraciaVirtualnehoHosta "localhost" "/var/www/html/udos_webserver/"
 
 # nastavenie pristupovych prav pre adresare
 nastavenieAdresarovychPrav "/var/www/html/udos_webserver/"
-
-#nakopirovanie defaultnej HTML stranky do vytvoreneho priecinka
-sudo cp index.html /var/www/html/udos_webserver/
 
 echo "Nastavenie webového servera bolo dokončené."
 

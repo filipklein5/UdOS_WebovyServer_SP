@@ -32,7 +32,13 @@ vytvorSpravcuWebu() {
     echo "$spravca_webu_meno" > spravca_webu.txt
     echo "$spravca_webu_heslo" > spravca_webu_heslo.txt
 
-    # nastavenie pristupu do /var/www/html/
+    # vytvorenie priecinka /udos_webserver/
+    sudo mkdir -p /var/www/html/udos_webserver/
+
+    #nakopirovanie defaultnej HTML stranky do vytvoreneho priecinka
+    sudo cp index.html /var/www/html/udos_webserver/
+
+    #nastavenie pristupu do /var/www/html/udos_webserver/
     sudo chown "$spravca_webu_meno":www-data /var/www/html/udos_webserver/
 
     # nastavenie chroot pre spravcu
