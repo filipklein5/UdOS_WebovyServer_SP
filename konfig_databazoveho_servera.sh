@@ -14,12 +14,12 @@ vytvor_databazu_uzivatela() {
     read -rs heslo_admina
 
     # vytvorenie databázy
-    echo "$heslo_admina" | sudo -S mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS $nazov_db;"
+    echo "$heslo_admina" | sudo -S mysql -u root -p"$heslo_admina" -e "CREATE DATABASE IF NOT EXISTS $nazov_db;"
 
     # vytvorenie užívateľa a pridelenie oprávnení pre databázu
-    echo "$heslo_admina" | sudo -S mysql -u root -p -e "CREATE USER '$uzivatel_db'@'localhost' IDENTIFIED BY '$heslo_db';"
+    echo "$heslo_admina" | sudo -S mysql -u root -p"$heslo_admina" -e "CREATE USER '$uzivatel_db'@'localhost' IDENTIFIED BY '$heslo_db';"
     echo -e "\nUcet s menom $uzivatel_db bol zapisany do databazy.\n"
-    echo "$heslo_admina" | sudo -S mysql -u root -p -e "GRANT ALL PRIVILEGES ON $nazov_db.* TO '$uzivatel_db'@'localhost';"
+    echo "$heslo_admina" | sudo -S mysql -u root -p"$heslo_admina" -e "GRANT ALL PRIVILEGES ON $nazov_db.* TO '$uzivatel_db'@'localhost';"
     echo -e "Uzivatel $uzivatel_db ma teraz vsetky opravnenia v databaze $nazov_db.\n"
 }
 
