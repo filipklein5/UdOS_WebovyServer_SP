@@ -10,7 +10,6 @@ konfiguraciaVirtualnehoHosta() {
     local config_file="/etc/apache2/sites-available/$domain_name.conf"
 
     cat << EOF | sudo tee "$config_file" >/dev/null
-    ServerName $domain_name
 
 <VirtualHost *:80>
     ServerName $domain_name
@@ -61,7 +60,7 @@ konfiguraciaVirtualnehoHosta "localhost" "/var/www/html/udos_webserver/"
 nastavenieAdresarovychPrav "/var/www/html/udos_webserver/"
 
 #nakopirovanie defaultnej HTML stranky do vytvoreneho priecinka
-sudo cp /UdOS_WebovyServer_SP/index.html /var/www/html/udos_webserver/
+sudo cp index.html /var/www/html/udos_webserver/
 
 echo "Nastavenie webového servera bolo dokončené."
 
