@@ -5,15 +5,15 @@ if [ "$(id -u)" = 0 ]; then
     echo "Ste prihlásený ako root, ukončujem inštaláciu."
     exit 1
 else 
-    echo "Ste prihlásený ako non-root user, pokračujeme v inštalácií"
+    echo -e "\nSte prihlásený ako non-root user, pokračujeme v inštalácií.\n"
 fi
 
 
 # skontrolujte pripojenie na internet pingnutim Google servera
-if ping -q -c 1 -W 5 www.google.com >/dev/null; then
-    echo "Máte stabilné pripojenie na internet. Začína sa inštalácia"
+if ping -q -c 2 -W 5 www.google.com >/dev/null; then
+    echo -e "Máte stabilné pripojenie na internet. Začína sa inštalácia\n"
 else
-    echo "Nemáte pripojenie na internet. Skript končí."
+    echo -e "Nemáte pripojenie na internet. Skript končí.\n"
     exit 1
 fi
 
@@ -30,7 +30,7 @@ for subor in *.sh; do
         sudo chmod +x "$subor"
     fi
 done
-echo -e "\nVšetky súbory v priečinku boli úspešne nastavené na spustiteľné.\n"
+echo -e "\nVšetky súčasti celkového skriptu boli úspešne nastavené na spustiteľné.\n"
 
 # prechod na dalsi skript
 source $HOME/UdOS_WebovyServer_SP/instalacia_softverov.sh

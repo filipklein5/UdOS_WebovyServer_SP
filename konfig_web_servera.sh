@@ -11,10 +11,10 @@ konfiguraciaVirtualnehoHosta() {
 
     cat << EOF | sudo tee "$config_file" >/dev/null
 
-<VirtualHost *:80>
-    ServerName $domain_name
-    Redirect / https://$domain_name/
-</VirtualHost>
+# <VirtualHost *:80>
+#     ServerName $domain_name
+#     Redirect / https://$domain_name/
+# </VirtualHost>
 
 <VirtualHost *:443>
     ServerAdmin webmaster@$domain_name
