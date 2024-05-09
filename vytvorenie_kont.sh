@@ -74,7 +74,7 @@ vytvorUcty() {
 # vytvorenie uctov
 vytvorUcty
 
-echo "Vytvorenie užívateľských účtov bolo úspešne dokončené."
+echo -e "\nVytvorenie užívateľských účtov bolo úspešne dokončené.\n"
 
 # prechod na dalsi skript
 source $HOME/UdOS_WebovyServer_SP/konfig_web_servera.sh

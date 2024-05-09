@@ -13,9 +13,9 @@ vytvor_databazu_uzivatela() {
     sudo mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS $nazov_db;"
 
     # vytvorenie užívateľa a pridelenie oprávnení pre databázu
-    sudo mysql -u root -p -e "CREATE USER '$uzivatel_db'@'localhost' IDENTIFIED BY '$heslo_db';"
-    sudo mysql -u root -p -e "GRANT ALL PRIVILEGES ON $nazov_db.* TO '$uzivatel_db'@'localhost';"
-    sudo mysql -u root -p -e "FLUSH PRIVILEGES;"
+    sudo mysql -u root -p -e 'CREATE USER "'$uzivatel_db'"@"localhost" IDENTIFIED BY "'$heslo_db'";'
+    sudo mysql -u root -p -e 'GRANT ALL PRIVILEGES ON "'$nazov_db'".* TO "'$uzivatel_db'"@"localhost";'
+    sudo mysql -u root -p -e 'FLUSH PRIVILEGES;'
 }
 
 # nastavenie databázy pre webovú aplikáciu

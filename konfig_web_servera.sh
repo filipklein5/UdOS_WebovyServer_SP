@@ -58,6 +58,9 @@ konfiguraciaVirtualnehoHosta "localhost" "/var/www/html/udos_webserver/"
 # nastavenie pristupovych prav pre adresare
 nastavenieAdresarovychPrav "/var/www/html/udos_webserver/"
 
+sudo systemctl reload apache2
+sudo systemctl restart apache2
+
 echo "Nastavenie webového servera bolo dokončené."
 
 # prechod na dalsi skript
