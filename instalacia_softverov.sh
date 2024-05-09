@@ -45,6 +45,6 @@ nainstalujBalicek "nodejs"
 # restartovanie apache pre spustenie
 sudo systemctl reload apache2
 
-echo -e "\Instalacia softverov bola uspesne dokoncena!\n"
+echo -e "Instalacia softverov bola uspesne dokoncena!\n"
 
 source $HOME/UdOS_WebovyServer_SP/vytvorenie_kont.sh
