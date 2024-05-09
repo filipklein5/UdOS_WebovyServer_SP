@@ -11,4 +11,4 @@ chmod u+x main.sh
 ./main.sh
 ```
 
-Ak všetko prebehlo úspešne, tak sa začal proces vytvárania Web servera.
+Ak všetko prebehlo úspešne, tak sa začal proces vytvárania a konfigurácie webového servera.
