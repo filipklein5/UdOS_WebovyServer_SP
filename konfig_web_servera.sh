@@ -10,6 +10,8 @@ konfiguraciaVirtualnehoHosta() {
     local config_file="/etc/apache2/sites-available/$domain_name.conf"
 
     cat << EOF | sudo tee "$config_file" >/dev/null
+    ServerName $domain_name
+
 <VirtualHost *:80>
     ServerName $domain_name
     Redirect / https://$domain_name/
