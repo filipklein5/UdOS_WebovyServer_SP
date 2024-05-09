@@ -28,9 +28,13 @@ EOF
     
     sudo systemctl reload apache2 || 
     { 
-        echo "Nepodarilo sa reštartovať Apache";
+        echo "Nepodarilo sa znovu načítať kofiguráciu Apache";
         exit 1; 
     }
+
+    #spustenie SSL modulu a restartovanie Apachu
+    sudo a2enmod ssl
+    sudo systemctl restart apache2
 }
 
 # nastavenie pristupovych prav pre adresare
