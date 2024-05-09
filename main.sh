@@ -17,7 +17,7 @@ else
     exit 1
 fi
 
-echo -e "\nNastavenie lokálneho času.\n"
+echo -e "\nNastavil sa lokálny čas pre našu časovú zónu.\n"
 sudo timedatectl set-timezone Europe/Bratislava
 
 echo -e "\nPred pustením skriptu je potrebný update.\n"

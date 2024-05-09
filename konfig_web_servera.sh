@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# zapnutie ssl
+sudo a2enmod ssl
+
 # nastavenie virtualneho hosta pre Apache, ktory pocuva na porte 443
 konfiguraciaVirtualnehoHosta() {
     local domain_name=$1
@@ -32,8 +35,7 @@ EOF
         exit 1; 
     }
 
-    #spustenie SSL modulu a restartovanie Apachu
-    sudo a2enmod ssl
+    #restartovanie Apachu
     sudo systemctl restart apache2
 }
 
