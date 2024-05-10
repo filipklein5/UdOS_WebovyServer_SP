@@ -2,6 +2,7 @@
 
 # funkcia pre instalaciu balickov a kontrolu uspesnosti v pripade chyb...
 echo -e "\n------INSTALACIA SOFTVEROV------\n"
+
 nainstalujBalicek() {
     local nazovBalicka=$1
     while true; do
@@ -20,7 +21,7 @@ nainstalujBalicek() {
                     exit
                     ;;
                 * ) 
-                    echo "Prossim, zadajte 'a' pre pokracovanie alebo 'n' pre ukoncenie." 
+                    echo "Prosim, zadajte 'a' pre pokracovanie alebo 'n' pre ukoncenie." 
                     continue
                     ;;
             esac
@@ -42,7 +43,6 @@ nainstalujBalicek "netfilter-persistent"
 
 nainstalujBalicek "nodejs"
 
-# restartovanie apache pre spustenie
 sudo systemctl reload apache2
 
 echo -e "Instalacia softverov bola uspesne dokoncena!\n"

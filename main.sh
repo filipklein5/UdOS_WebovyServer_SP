@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# nespustat script ako root
+echo -e "\n------MAIN------\n"
+# nespusti sa script ako root
 if [ "$(id -u)" = 0 ]; then
     echo "Ste prihlaseny ako root, ukoncujem instalaciu."
     exit 1
@@ -9,7 +10,7 @@ else
 fi
 
 
-# skontrolujte pripojenie na internet pingnutim google
+# skontroluje sa pripojenie na internet pingnutim google
 if ping -q -c 2 -W 5 www.google.com >/dev/null; then
     echo -e "Mate stabilne pripojenie na internet. Zacina sa instalacia\n"
 else
@@ -22,7 +23,6 @@ sudo timedatectl set-timezone Europe/Bratislava
 
 echo -e "\nPred spustenim skriptu je potrebny update.\n"
 sudo apt update -y && sudo apt upgrade -y
-# apt update
 
 # vsetky subory su nastavenne ako spustitelne
 for subor in *.sh; do
